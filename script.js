@@ -111,46 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     yearElement.textContent = new Date().getFullYear();
   }
 
-  // 5. CONTACT FORM — NOT CONNECTED TO EMAIL YET
   // 5. CONTACT FORM — FORMSPREE
-const contactForm = document.querySelector("#contact-form");
-
-if (contactForm) {
-  contactForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const status = contactForm.querySelector(".form-status");
-    const button = contactForm.querySelector('button[type="submit"]');
-
-    if (button) button.disabled = true;
-    if (status) status.textContent = "Sending message…";
-
-    try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        body: new FormData(contactForm),
-        headers: { Accept: "application/json" }
-      });
-
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
-
-      if (status) {
-        status.textContent = "Message sent! Thank you for reaching out.";
-      }
-
-      contactForm.reset();
-    } catch (error) {
-      if (status) {
-        status.textContent =
-          "Couldn't send your message. Please try again.";
-      }
-    } finally {
-      if (button) button.disabled = false;
-    }
-  });
-}
 
   // 6. CURRENT NAVIGATION SECTION
   const navLinks = document.querySelectorAll(
