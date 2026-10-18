@@ -112,6 +112,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 5. CONTACT FORM — FORMSPREE
+  
+  // 5. CONTACT FORM — AJAX FORMSPREE SUBMISSION
+  const contactForm = document.querySelector("#contact-form");
+
+  if (contactForm) {
+    const formStatus = contactForm.querySelector("#form-status");
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) return;
+
+      const originalButtonHTML = submitButton?.innerHTML;
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending…";
+      }
+
+      if (formStatus) {
+        formStatus.textContent = "Sending your message…";
+      }
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: { Accept: "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Formspree did not accept the submission.");
+        }
+
+        contactForm.reset();
+
+        if (formStatus) {
+          formStatus.textContent =
+            "Message sent successfully. Thank you for reaching out!";
+        }
+      } catch (error) {
+        if (formStatus) {
+          formStatus.textContent =
+            "Sorry, your message couldn't be sent. Please try again.";
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonHTML;
+        }
+      }
+    });
+  }
+
 
   // 6. CURRENT NAVIGATION SECTION
   const navLinks = document.querySelectorAll(
