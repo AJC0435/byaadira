@@ -529,6 +529,9 @@
 
         <!-- 06: CONTACT -->
         
+
+<!-- 06: CONTACT -->
+
 <section class="contact-section" id="contact">
   <div class="section-heading reveal">
     <span class="section-number">04 — GET IN TOUCH</span>
@@ -558,65 +561,40 @@
     >
       <div class="form-group">
         <label for="contact-name">Your name</label>
-        <input
-          id="contact-name"
-          type="text"
-          name="name"
+        <input id="contact-name" type="text" name="name"
           placeholder="What should I call you?"
-          autocomplete="name"
-          required
-        >
+          autocomplete="name" required>
       </div>
 
       <div class="form-group">
         <label for="contact-email">Your email</label>
-        <input
-          id="contact-email"
-          type="email"
-          name="email"
+        <input id="contact-email" type="email" name="email"
           placeholder="you@example.com"
-          autocomplete="email"
-          required
-        >
+          autocomplete="email" required>
       </div>
 
       <div class="form-group">
         <label for="contact-subject">Subject</label>
-        <input
-          id="contact-subject"
-          type="text"
-          name="subject"
-          placeholder="What's on your mind?"
-          required
-        >
+        <input id="contact-subject" type="text" name="subject"
+          placeholder="What's on your mind?" required>
       </div>
 
       <div class="form-group">
         <label for="contact-message">Your message</label>
-        <textarea
-          id="contact-message"
-          name="message"
-          rows="5"
-          placeholder="Write your message here..."
-          required
-        ></textarea>
+        <textarea id="contact-message" name="message" rows="5"
+          placeholder="Write your message here..." required></textarea>
       </div>
 
       <button class="contact-submit" type="submit">
         Send Message <span aria-hidden="true">↗</span>
       </button>
 
-      <p class="form-note">
-        Your message will be submitted securely.
+      <p class="form-note" id="form-status" role="status" aria-live="polite">
+        Your message will be submitted securely through Formspree.
       </p>
     </form>
   </div>
 </section>
-
-        </section>
-
-    </main>
-
 
     <!-- FOOTER -->
     <footer class="site-footer">
