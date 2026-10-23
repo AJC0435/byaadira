@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.remove();
     } else {
       intro.style.transition =
-        "opacity 900ms ease, visibility 900ms ease";
+        "opacity 1100ms cubic-bezier(0.2, 0.75, 0.25, 1), visibility 1100ms cubic-bezier(0.2, 0.75, 0.25, 1)";
 
       window.setTimeout(() => {
         intro.style.opacity = "0";
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.setTimeout(() => {
           intro.remove();
-        }, 950);
-      }, 1600);
+        }, 1150);
+      }, 950);
     }
   }
 

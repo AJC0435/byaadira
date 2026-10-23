@@ -1492,3 +1492,841 @@ section[id] {
   }
 }
 ```
+
+
+/* =========================================
+   LIQUID GLASS REFINEMENT — SOFT GRAPHITE
+   Keeps the original typography and navy /
+   burgundy accents while softening contrast.
+   ========================================= */
+
+:root {
+    --black: #141518;
+    --graphite: #1d1f23;
+    --slate: #2a2c32;
+    --midnight: #202b40;
+    --cherry: #6b3042;
+    --silver: #c0c0c2;
+    --ivory: #e9e7e2;
+    --muted: #96969c;
+    --line: rgba(222, 222, 228, 0.14);
+    --glass-fill: rgba(232, 234, 240, 0.045);
+    --glass-edge: rgba(226, 228, 235, 0.19);
+    --glass-highlight: rgba(255, 255, 255, 0.075);
+    --ease-fluid: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+html {
+    background: #141518;
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 13% 9%, rgba(32, 43, 64, 0.24), transparent 36rem),
+        radial-gradient(ellipse at 88% 48%, rgba(107, 48, 66, 0.095), transparent 42rem),
+        #141518;
+    color: var(--ivory);
+}
+
+/* Soft, low-contrast grain: retain the editorial texture without harshness. */
+body::before {
+    opacity: 0.065;
+}
+
+/* Header reads as a quiet glass layer instead of a hard strip. */
+.site-header {
+    background: linear-gradient(
+        180deg,
+        rgba(24, 25, 29, 0.74),
+        rgba(24, 25, 29, 0.28) 72%,
+        transparent
+    );
+    border-bottom-color: rgba(230, 230, 235, 0.055);
+    -webkit-backdrop-filter: blur(14px) saturate(115%);
+    backdrop-filter: blur(14px) saturate(115%);
+}
+
+.main-nav a,
+.wordmark,
+.text-link,
+.back-to-top,
+.contact-link,
+.interest-item,
+.cv-item-title {
+    transition-timing-function: var(--ease-fluid);
+}
+
+.main-nav a {
+    transition: color 650ms var(--ease-fluid);
+}
+
+.main-nav a::after {
+    height: 1px;
+    transform-origin: center;
+    transition: transform 700ms var(--ease-fluid);
+}
+
+.main-nav a[aria-current="location"] {
+    color: var(--ivory);
+}
+
+.main-nav a[aria-current="location"]::after {
+    transform: scaleX(1);
+    opacity: 0.8;
+}
+
+/* Glass-like surfaces: translucent, softly edged, and never too shiny. */
+.project-card,
+.cv-item,
+.interest-item,
+.cv-dialog,
+.portrait-frame,
+.project-visual,
+.contact-links {
+    border-color: var(--glass-edge);
+}
+
+.project-card {
+    overflow: hidden;
+    border-radius: 3px 20px 3px 20px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.045), transparent 44%),
+        rgba(35, 36, 41, 0.43);
+    -webkit-backdrop-filter: blur(18px) saturate(118%);
+    backdrop-filter: blur(18px) saturate(118%);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.055),
+        0 16px 55px rgba(0,0,0,0.08);
+    transition:
+        border-color 850ms var(--ease-fluid),
+        background-color 850ms var(--ease-fluid),
+        box-shadow 850ms var(--ease-fluid),
+        transform 1000ms var(--ease-fluid);
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 12%,
+        rgba(255,255,255,0.055) 34%,
+        transparent 54%
+    );
+    transform: translateX(-28%);
+    transition: opacity 850ms var(--ease-fluid), transform 1200ms var(--ease-fluid);
+}
+
+.project-card:hover {
+    border-color: rgba(210, 211, 220, 0.3);
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.065), transparent 46%),
+        rgba(39, 40, 46, 0.58);
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 24px 70px rgba(0,0,0,0.15);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+    transform: translateX(8%);
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card-minimal {
+    background:
+        radial-gradient(ellipse at 80% 50%, rgba(37, 51, 65, 0.25), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,0.04), transparent 48%),
+        rgba(35, 36, 41, 0.38);
+}
+
+.projects-section {
+    background:
+        radial-gradient(ellipse at 10% 45%, rgba(107, 48, 66, 0.12), transparent 45%),
+        linear-gradient(145deg, rgba(255,255,255,0.012), transparent 42%),
+        #1b1c20;
+}
+
+.optics-visual,
+.chaos-visual {
+    border: 1px solid rgba(222, 222, 228, 0.1);
+    border-radius: 2px 16px 2px 16px;
+    background-color: #191a1e;
+}
+
+.optics-visual {
+    background:
+        radial-gradient(ellipse at 55% 48%, rgba(107, 48, 66, 0.22), transparent 48%),
+        linear-gradient(145deg, #27292e, #17181c);
+}
+
+.chaos-visual {
+    background:
+        radial-gradient(ellipse at center, rgba(32, 43, 64, 0.42), transparent 70%),
+        #191a1e;
+}
+
+.project-tags span {
+    border-radius: 2px 9px 2px 9px;
+    background: rgba(255,255,255,0.025);
+    transition:
+        border-color 650ms var(--ease-fluid),
+        background-color 650ms var(--ease-fluid),
+        color 650ms var(--ease-fluid);
+}
+
+.project-tags span:hover {
+    border-color: rgba(192,192,194,0.32);
+    background: rgba(255,255,255,0.045);
+    color: var(--ivory);
+}
+
+/* CV rows feel like layered glass sheets; opening content glides in. */
+.cv-item {
+    border-bottom-color: rgba(222, 222, 228, 0.14);
+}
+
+.cv-item summary {
+    transition: padding-left 750ms var(--ease-fluid);
+}
+
+.cv-item summary:hover {
+    padding-left: 5px;
+}
+
+.cv-item-content {
+    animation: cv-content-glide 720ms var(--ease-fluid) both;
+}
+
+@keyframes cv-content-glide {
+    from { opacity: 0; transform: translateY(-7px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* The CV dialog fades and settles into place instead of snapping open. */
+.cv-dialog {
+    border-radius: 4px 22px 4px 22px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.075), transparent 48%),
+        rgba(31, 32, 37, 0.94);
+    -webkit-backdrop-filter: blur(26px) saturate(125%);
+    backdrop-filter: blur(26px) saturate(125%);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    transition:
+        opacity 500ms var(--ease-fluid),
+        transform 650ms var(--ease-fluid),
+        overlay 500ms allow-discrete,
+        display 500ms allow-discrete;
+}
+
+.cv-dialog[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.cv-dialog::backdrop {
+    background: rgba(9, 10, 13, 0.58);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition:
+        background-color 500ms var(--ease-fluid),
+        backdrop-filter 500ms var(--ease-fluid),
+        overlay 500ms allow-discrete,
+        display 500ms allow-discrete;
+}
+
+@starting-style {
+    .cv-dialog[open] {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+    }
+
+    .cv-dialog[open]::backdrop {
+        background: rgba(9, 10, 13, 0);
+        backdrop-filter: blur(0);
+    }
+}
+
+.dialog-close {
+    border-radius: 50%;
+    background: rgba(255,255,255,0.025);
+    transition:
+        border-color 650ms var(--ease-fluid),
+        background-color 650ms var(--ease-fluid),
+        transform 750ms var(--ease-fluid);
+}
+
+.dialog-close:hover {
+    border-color: rgba(192,192,194,0.45);
+    background: rgba(255,255,255,0.075);
+    transform: rotate(90deg);
+}
+
+/* Links and buttons: slow, soft feedback instead of sudden movement. */
+.text-link {
+    position: relative;
+    transition:
+        color 650ms var(--ease-fluid),
+        border-color 650ms var(--ease-fluid),
+        background-color 650ms var(--ease-fluid),
+        transform 750ms var(--ease-fluid);
+}
+
+.text-link::after {
+    transition: transform 850ms var(--ease-fluid);
+}
+
+.text-link span {
+    display: inline-block;
+    transition: transform 750ms var(--ease-fluid), color 650ms var(--ease-fluid);
+}
+
+.text-link:hover span {
+    transform: translate(3px, -3px);
+}
+
+.submit-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px 14px 2px 14px;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,0.055), transparent 60%),
+        rgba(32, 34, 40, 0.72);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    transition:
+        border-color 750ms var(--ease-fluid),
+        background-color 750ms var(--ease-fluid),
+        gap 850ms var(--ease-fluid),
+        transform 750ms var(--ease-fluid),
+        box-shadow 750ms var(--ease-fluid);
+}
+
+.submit-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.1) 48%, transparent 72%);
+    transform: translateX(-120%);
+    transition: transform 1000ms var(--ease-fluid);
+}
+
+.submit-button:hover {
+    gap: 41px;
+    border-color: rgba(192,192,194,0.36);
+    background-color: rgba(42,44,50,0.82);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+}
+
+.submit-button:hover::before {
+    transform: translateX(120%);
+}
+
+.submit-button > * {
+    position: relative;
+}
+
+.interest-item {
+    transition:
+        border-color 800ms var(--ease-fluid),
+        background-color 800ms var(--ease-fluid),
+        padding 800ms var(--ease-fluid),
+        transform 800ms var(--ease-fluid);
+}
+
+.interest-item:hover {
+    background: rgba(255,255,255,0.025);
+    transform: translateX(3px);
+}
+
+.interest-mark {
+    transition: transform 800ms var(--ease-fluid), color 800ms var(--ease-fluid);
+}
+
+/* Contact rows gain a faint glass tint on interaction, not a hard jump. */
+.contact-links {
+    border-top-color: rgba(222, 222, 228, 0.14);
+}
+
+.contact-link {
+    border-bottom-color: rgba(222, 222, 228, 0.14);
+    transition:
+        padding 800ms var(--ease-fluid),
+        color 700ms var(--ease-fluid),
+        background-color 700ms var(--ease-fluid);
+}
+
+.contact-link:hover {
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.035), transparent 76%);
+}
+
+.contact-link-arrow {
+    transition: transform 750ms var(--ease-fluid), color 750ms var(--ease-fluid);
+}
+
+.contact-link:hover .contact-link-arrow {
+    transform: translate(3px, -3px);
+    color: var(--silver);
+}
+
+/* A calm, restrained hero glow ties the sections together. */
+.hero-decoration {
+    opacity: 0.72;
+    filter: blur(0.25px);
+}
+
+.decoration-ring {
+    transition:
+        transform 1800ms var(--ease-fluid),
+        border-color 1000ms var(--ease-fluid),
+        opacity 1000ms var(--ease-fluid);
+}
+
+.hero:hover .ring-one {
+    transform: scale(1.045);
+}
+
+.hero:hover .ring-two {
+    transform: scale(1.08);
+}
+
+.site-footer {
+    background: rgba(20, 21, 24, 0.82);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+/* Avoid forcing hover movement on touch devices. */
+@media (hover: none) {
+    .project-card:hover,
+    .interest-item:hover,
+    .contact-link:hover,
+    .submit-button:hover {
+        transform: none;
+    }
+
+    .project-card:hover {
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.055);
+    }
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        background: linear-gradient(180deg, rgba(24,25,29,0.86), rgba(24,25,29,0.48));
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+    }
+
+    .project-card {
+        border-radius: 3px 15px 3px 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cv-dialog,
+    .cv-dialog::backdrop,
+    .project-card,
+    .project-card::before,
+    .text-link,
+    .text-link::after,
+    .text-link span,
+    .submit-button,
+    .submit-button::before,
+    .contact-link,
+    .contact-link-arrow,
+    .interest-item,
+    .interest-mark,
+    .decoration-ring {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================
+   SECOND PASS — ACTUAL NAV, CONTACT & CV FIXES
+   ========================================= */
+
+/* Apple-like liquid-glass navigation capsule */
+.site-header {
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(14px, 2.4vw, 36px);
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-bottom: 0;
+}
+
+.main-nav {
+    justify-self: center;
+    width: max-content;
+    max-width: 100%;
+    gap: 5px;
+    padding: 6px;
+    border: 1px solid rgba(232, 234, 242, 0.16);
+    border-radius: 999px;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.015) 55%),
+        rgba(37, 39, 45, 0.48);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -1px 0 rgba(255,255,255,0.025),
+        0 12px 38px rgba(0,0,0,0.16);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+    backdrop-filter: blur(24px) saturate(145%);
+}
+
+.main-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 15px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: rgba(233, 231, 226, 0.75);
+    font-size: 12px;
+    white-space: nowrap;
+    transition:
+        color 650ms var(--ease-fluid),
+        background 750ms var(--ease-fluid),
+        border-color 750ms var(--ease-fluid),
+        box-shadow 750ms var(--ease-fluid),
+        transform 750ms var(--ease-fluid);
+}
+
+.main-nav a::after {
+    display: none;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible,
+.main-nav a[aria-current="location"] {
+    color: var(--ivory);
+    border-color: rgba(235, 236, 242, 0.18);
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.025)),
+        rgba(92, 94, 105, 0.16);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.13),
+        0 4px 16px rgba(0,0,0,0.1);
+}
+
+.main-nav a:hover {
+    transform: translateY(-1px);
+}
+
+/* Any existing text-link action becomes a glass button, not a bare underline. */
+.text-link {
+    min-height: 44px;
+    padding: 11px 17px;
+    gap: 18px;
+    border: 1px solid rgba(226, 228, 235, 0.18);
+    border-radius: 999px;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.015) 62%),
+        rgba(37, 39, 45, 0.44);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.09),
+        0 7px 24px rgba(0,0,0,0.09);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    backdrop-filter: blur(18px) saturate(135%);
+    transition:
+        color 700ms var(--ease-fluid),
+        border-color 750ms var(--ease-fluid),
+        background 750ms var(--ease-fluid),
+        box-shadow 850ms var(--ease-fluid),
+        transform 850ms var(--ease-fluid),
+        gap 850ms var(--ease-fluid);
+}
+
+.text-link::after {
+    display: none;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+    color: #fff;
+    border-color: rgba(226, 228, 235, 0.34);
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.035)),
+        rgba(50, 52, 60, 0.62);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 10px 30px rgba(0,0,0,0.17);
+    transform: translateY(-2px);
+}
+
+.text-link:hover span {
+    transform: translate(2px, -2px);
+}
+
+.cv-open-button {
+    margin-top: 42px;
+}
+
+/* Fix the actual Contact section: it was missing section padding and its heading
+   inherited a horizontal flex layout intended for numbered section dividers. */
+.contact-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: var(--section-space) var(--page-gutter);
+    background:
+        radial-gradient(ellipse at 82% 22%, rgba(107, 48, 66, 0.16), transparent 42rem),
+        radial-gradient(ellipse at 5% 82%, rgba(32, 43, 64, 0.23), transparent 38rem),
+        linear-gradient(145deg, rgba(255,255,255,0.018), transparent 45%),
+        #1d1f23;
+}
+
+.contact-section > .section-heading {
+    display: block;
+    max-width: 850px;
+    margin: 0 auto 38px;
+}
+
+.contact-section > .section-heading .section-number {
+    display: block;
+    margin-bottom: 28px;
+    color: var(--silver);
+}
+
+.contact-section > .section-heading h2 {
+    margin: 0 0 24px;
+    font-size: clamp(58px, 9.5vw, 118px);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+}
+
+.contact-section > .section-heading h2 .accent {
+    color: var(--cherry);
+}
+
+.contact-section > .section-heading p {
+    max-width: 440px;
+    color: rgba(233, 231, 226, 0.72);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.contact-links {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+    margin: 48px auto 0;
+    padding: 7px 22px;
+    border: 1px solid rgba(226, 228, 235, 0.14);
+    border-radius: 22px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.065), transparent 48%),
+        rgba(24, 25, 30, 0.38);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 20px 60px rgba(0,0,0,0.12);
+    -webkit-backdrop-filter: blur(22px) saturate(125%);
+    backdrop-filter: blur(22px) saturate(125%);
+}
+
+.contact-link {
+    display: grid;
+    grid-template-columns: minmax(100px, 140px) minmax(0, 1fr) 28px;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+    padding: 21px 12px;
+    border-bottom: 1px solid rgba(226, 228, 235, 0.12);
+    border-radius: 12px;
+    background: transparent;
+    transition:
+        color 700ms var(--ease-fluid),
+        padding 800ms var(--ease-fluid),
+        border-color 700ms var(--ease-fluid),
+        background 800ms var(--ease-fluid),
+        transform 800ms var(--ease-fluid);
+}
+
+.contact-link:last-child {
+    border-bottom-color: transparent;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+    padding-left: 18px;
+    background: linear-gradient(100deg, rgba(255,255,255,0.055), rgba(255,255,255,0.008));
+    border-bottom-color: rgba(226, 228, 235, 0.2);
+    color: var(--ivory);
+}
+
+.contact-link-value {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.contact-link-arrow {
+    transition: transform 800ms var(--ease-fluid), color 800ms var(--ease-fluid);
+}
+
+/* CV / certifications: open into the viewer's space, never slide sideways. */
+.cv-list {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.cv-item {
+    transform-origin: top center;
+    transition:
+        border-color 650ms var(--ease-fluid),
+        background-color 650ms var(--ease-fluid),
+        box-shadow 650ms var(--ease-fluid);
+}
+
+.cv-item summary {
+    position: relative;
+    z-index: 1;
+    transition:
+        padding-left 750ms var(--ease-fluid),
+        color 650ms var(--ease-fluid),
+        background-color 650ms var(--ease-fluid);
+}
+
+.cv-item[open] summary {
+    background: linear-gradient(90deg, rgba(255,255,255,0.035), transparent 72%);
+}
+
+.cv-item-content {
+    transform-origin: top center;
+    animation: cv-depth-open 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: opacity, transform;
+}
+
+@keyframes cv-depth-open {
+    0% {
+        opacity: 0;
+        transform: perspective(900px) rotateX(-9deg) translateY(-9px) scale(0.985);
+        filter: blur(3px);
+    }
+    55% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(900px) rotateX(0deg) translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.cv-item[open] {
+    border-bottom-color: rgba(226, 228, 235, 0.24);
+}
+
+.cv-item[open] .cv-item-symbol {
+    transform: rotate(45deg) scale(1.04);
+}
+
+@media (max-width: 900px) {
+    .site-header {
+        grid-template-columns: auto 1fr;
+    }
+
+    .main-nav {
+        justify-self: end;
+    }
+
+    .header-index {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+        gap: 3px;
+        padding: 5px;
+    }
+
+    .main-nav a {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 7px 9px;
+        font-size: 11px;
+    }
+
+    .contact-section {
+        padding: 95px 23px;
+    }
+
+    .contact-section > .section-heading h2 {
+        font-size: clamp(49px, 13vw, 72px);
+    }
+
+    .contact-links {
+        margin-top: 34px;
+        padding: 6px 10px;
+        border-radius: 17px;
+    }
+
+    .contact-link {
+        grid-template-columns: 1fr 24px;
+        gap: 5px 10px;
+        padding: 16px 8px;
+    }
+
+    .contact-link-label {
+        grid-column: 1;
+    }
+
+    .contact-link-value {
+        grid-column: 1;
+        grid-row: 2;
+        font-size: 14px;
+    }
+
+    .contact-link-arrow {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cv-item-content {
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .main-nav a,
+    .text-link,
+    .contact-link {
+        transition: none !important;
+    }
+}
