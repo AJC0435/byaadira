@@ -2339,3 +2339,269 @@ body::before {
     object-position: center top;
     border-radius: inherit;
 }
+
+
+/* ========================================
+   COMPLEX SYSTEMS PAGE
+   ======================================== */
+
+.complex-page {
+    min-height: 100vh;
+}
+
+.complex-page .site-header {
+    position: relative;
+    z-index: 10;
+}
+
+.cs-intro {
+    width: min(100% - 3rem, 1100px);
+    margin: clamp(5rem, 12vw, 10rem) auto 7rem;
+}
+
+.cs-intro h1 {
+    margin: 1.5rem 0;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+}
+
+.cs-description {
+    max-width: 650px;
+    line-height: 1.9;
+    opacity: 0.8;
+}
+
+.cs-intro .visual-coordinate {
+    display: block;
+    margin-top: 3rem;
+}
+
+.cs-index,
+.cs-attractor-section {
+    width: min(100% - 3rem, 1100px);
+    margin: 0 auto 3rem;
+}
+
+.cs-index-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 3vw, 2rem);
+    flex-wrap: wrap;
+    margin: 1.5rem 0 5rem;
+}
+
+.cs-index-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid rgba(184, 183, 181, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition:
+        background 300ms ease,
+        border-color 300ms ease,
+        transform 300ms ease;
+}
+
+.cs-index-link:hover {
+    background: rgba(107, 23, 40, 0.25);
+    border-color: rgba(184, 183, 181, 0.5);
+    transform: translateY(-3px);
+}
+
+.cs-index-number,
+.cs-summary-number {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    opacity: 0.6;
+}
+
+.cs-index-arrow {
+    opacity: 0.5;
+}
+
+.cs-attractor-section {
+    scroll-margin-top: 3rem;
+    border-top: 1px solid rgba(184, 183, 181, 0.2);
+}
+
+.cs-attractor {
+    padding: 1rem 0 3rem;
+}
+
+.cs-attractor-summary {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+.cs-attractor-summary::-webkit-details-marker {
+    display: none;
+}
+
+.cs-summary-title {
+    display: grid;
+    gap: 0.65rem;
+    flex: 1;
+}
+
+.cs-summary-heading {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
+}
+
+.cs-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 1px solid rgba(184, 183, 181, 0.25);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition:
+        transform 350ms ease,
+        background 350ms ease;
+}
+
+.cs-attractor[open] .cs-toggle {
+    transform: rotate(45deg);
+    background: rgba(107, 23, 40, 0.25);
+}
+
+.cs-attractor-content {
+    max-width: 850px;
+    padding: 1rem 0 2rem;
+    animation: cs-reveal 500ms ease both;
+}
+
+@keyframes cs-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cs-attractor-content > p {
+    max-width: 700px;
+    line-height: 1.9;
+    opacity: 0.82;
+}
+
+.cs-content-heading {
+    margin: 1rem 0 2rem;
+}
+
+.cs-content-heading h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+}
+
+.cs-placeholder {
+    min-height: 280px;
+    margin: 2.5rem 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    border: 1px solid rgba(184, 183, 181, 0.2);
+    border-radius: 1.5rem;
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(107, 23, 40, 0.22),
+            transparent 65%
+        ),
+        rgba(255, 255, 255, 0.025);
+}
+
+.cs-placeholder-mark {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 300;
+    letter-spacing: -0.08em;
+    color: #B8B7B5;
+}
+
+.cs-placeholder > span:nth-child(2) {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+}
+
+.cs-placeholder-note {
+    font-size: 0.8rem;
+    opacity: 0.55;
+}
+
+.cs-footer {
+    width: min(100% - 3rem, 1100px);
+    margin: 7rem auto 2rem;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(184, 183, 181, 0.2);
+}
+
+.cs-footer p {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+    .cs-intro {
+        margin-top: 5rem;
+    }
+
+    .cs-index-track {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .cs-index-link {
+        justify-content: space-between;
+    }
+
+    .cs-index-arrow {
+        display: none;
+    }
+
+    .cs-attractor-summary {
+        gap: 0.8rem;
+    }
+
+    .cs-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cs-attractor-content {
+        animation: none;
+    }
+
+    .cs-index-link,
+    .cs-toggle {
+        transition: none;
+    }
+}
